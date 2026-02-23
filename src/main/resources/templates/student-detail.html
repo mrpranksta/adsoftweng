@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Tiet Sinh Vien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .detail-container {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .detail-row {
+            display: flex;
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            font-weight: bold;
+            width: 120px;
+            color: #555;
+        }
+        .detail-value {
+            flex: 1;
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chi tiết</h1>
+
+    <div class="detail-container" th:if="${student}">
+        <div class="detail-row">
+            <span class="detail-label">ID:</span>
+            <span class="detail-value" th:text="${student.id}">SV001</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Họ và tên:</span>
+            <span class="detail-value" th:text="${student.name}">Nguyen Van A</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value" th:text="${student.email}">email@example.com</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Tuổi:</span>
+            <span class="detail-value" th:text="${student.age}">20</span>
+        </div>
+    </div>
+
+    <div class="detail-container" th:unless="${student}">
+        <p style="color: #dc3545; text-align: center;">Không tìm thấy sinh viên có mã trên.</p>
+    </div>
+
+    <div class="button-container">
+        <a href="/students" class="btn btn-back">Quay lại</a>
+        <a th:href="@{/students/{id}/edit(id=${student.id})}" class="btn btn-edit" th:if="${student}">Sửa</a>
+        <form th:action="@{/students/{id}/delete(id=${student.id})}" method="post" 
+              onsubmit="return confirm('Ban co chac chan muon xoa sinh vien nay khong?');"
+              style="margin: 0;" th:if="${student}">
+            <button type="submit" class="btn btn-delete">Xóa</button>
+        </form>
+    </div>
+
+</body>
+</html>
