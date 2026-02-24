@@ -109,7 +109,7 @@
         <a href="/students" class="btn btn-back">Quay lại</a>
         <a th:href="@{/students/{id}/edit(id=${student.id})}" class="btn btn-edit" th:if="${student}">Sửa</a>
         <form th:action="@{/students/{id}/delete(id=${student.id})}" method="post" 
-              onsubmit="return confirm('Ban co chac chan muon xoa sinh vien nay khong?');"
+              onsubmit="return confirm('Xác nhận xóa sinh viên?');"
               style="margin: 0;" th:if="${student}">
             <button type="submit" class="btn btn-delete">Xóa</button>
         </form>
