@@ -1,16 +1,4 @@
 services:
-  db:
-    image: postgres:16
-    container_name: student-management-db
-    environment:
-      POSTGRES_DB: ${DATABASE_URL}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   app:
     build: .
     container_name: student-management-app
