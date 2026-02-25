@@ -74,12 +74,14 @@ docker compose down
 
 ## 3. Trả lời câu hỏi:
 **Câu 1:**  Cố tình Insert một sinh viên có `id` trùng với một người đã có sẵn. Quan sát thông báo lỗi: `UNIQUE constraint failed`. Tại sao Database lại chặn thao tác này?
+
 **Trả lời:**
-*Do `id` là khóa chính (primary key), không cho phép giá trị trùng lặp nên ta không thể thêm sinh viên mới có `id` trùng với một người đã có trong database.
+Do `id` là khóa chính (primary key), không cho phép giá trị trùng lặp nên ta không thể thêm sinh viên mới có `id` trùng với một người đã có trong database.
 
 **Câu 2:** Thử Insert một sinh viên nhưng bỏ trống cột `name` (để NULL). Database có báo lỗi không? Từ đó suy nghĩ xem sự thiếu chặt chẽ này ảnh hưởng gì khi code Java đọc dữ liệu lên?
+
 **Trả lời:**
 Database không báo lỗi. Khi code Java đọc dữ liệu trên, `name` nhận giá trị `null`. Sự thiếu chặt chẽ này dẫn đến:
-    * Phát sinh yêu cầu xử lý / kiểm tra trường hợp NullPointerException khi đọc dữ liệu từ bảng, khiến code rườm rà hơn. Nếu không xử lý sẽ phát sinh lỗi.
-    * Chức năng thực hiện trên dữ liệu này ảnh hưởng tính đảm bảo (reliability) như hiển thị bảng, tìm kiếm, lọc thông tin,...
+* Phát sinh yêu cầu xử lý / kiểm tra trường hợp NullPointerException khi đọc dữ liệu từ bảng, khiến code rườm rà hơn. Nếu không xử lý sẽ phát sinh lỗi.
+* Chức năng thực hiện trên dữ liệu này ảnh hưởng tính đảm bảo (reliability) như hiển thị bảng, tìm kiếm, lọc thông tin,...
 
