@@ -97,7 +97,7 @@
     </style>
 </head>
 <body>
-    <h1 th:text="${student.id != null ? 'Chỉnh Sửa Sinh Viên' : 'Thêm Mới Sinh Viên'}"></h1>
+    <h1 th:text="${student.id != null ? 'Chỉnh sửa sinh viên' : 'Thêm mới sinh viên'}"></h1>
 
     <div class="form-container">
         <form th:action="${student.id != null ? '/students/' + student.id + '/edit' : '/students/new'}" 
