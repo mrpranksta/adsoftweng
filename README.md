@@ -1,7 +1,7 @@
 # Lab: Xây Dựng Web App Căn Bản
 Sinh viên thực hiện: Lê Hoàng Tiến - 2213455.
 
-Public URL: https://student-management-goa3.onrender.com
+Public URL: https://student-management-goa3.onrender.com/students
 
 ## 1. Hướng dẫn chạy dự án:
 
